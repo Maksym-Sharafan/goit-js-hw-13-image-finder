@@ -1,14 +1,25 @@
 body {
-  background-color: burlywood;
+  background-color: rgb(208, 228, 161);
 }
 
 li {
   list-style-type: none;
 }
 
-.gallery {
+.overWrapper {
+  display: block;
+  padding-bottom: 200px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.search-form {
+  padding: 30px;
+  display: block;
+  align-items: center;
+}
+
+.gallery {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -30,4 +41,14 @@ li {
 .stats {
   display: flex;
   justify-content: space-around;
+}
+
+.invisible_btn {
+  opacity: 0;
+}
+
+.load_more {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

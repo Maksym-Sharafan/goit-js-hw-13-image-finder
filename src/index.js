@@ -28,7 +28,7 @@ function takeFoundItems(e) {
     if (!objectFetchAPI.query) return;
 
     handleTakeData();
-    
+    buttonLoadMore.classList.remove('invisible_btn');
 };
 
 async function handleTakeData() {
@@ -43,7 +43,7 @@ async function handleTakeData() {
 
 function renderImageList(item) {
     const template = imageCard(item);
-    imagesList.insertAdjacentHTML('beforeend', template) ;
+    imagesList.insertAdjacentHTML('beforeend', template);
 };
 
 function clearContainer() {
@@ -51,13 +51,13 @@ function clearContainer() {
     if (objectFetchAPI.page > 1) {
         return objectFetchAPI.page = 1;
     }
+    buttonLoadMore.classList.add('invisible_btn');
 };
-
 
 function toLoadMore() {
     objectFetchAPI.page += 1;
     handleTakeData();
-    imagesList.scrollIntoView({block: "end", behavior: "smooth"});
+    imagesList.scrollIntoView({ block: "end", behavior: "smooth" });
     return;
 };
 
@@ -72,8 +72,8 @@ function handleModalImg(e) {
     </div>
     `);
 
-    instance.show();
-    };   
+        instance.show();
+    };
 };
 
 function showFetchError(err) {
@@ -89,26 +89,26 @@ function showFetchError(err) {
 };
 
 
-document.addEventListener("scroll", intersectionObserver);
+// document.addEventListener("scroll", intersectionObserver);
 
-function intersectionObserver() {
-    let options = {
-        root: null,
-        rootMargins: "0px",
-        threshold: 1.0,
-    };
-    const observer = new IntersectionObserver(handleIntersect, options);
-    observer.trigger;
-    //an initial load of some data
-    handleTakeData();
-    
-    document.removeEventListener("scroll", intersectionObserver);
-}
+// function intersectionObserver() {
+//     let options = {
+//         root: null,
+//         rootMargins: "0px",
+//         threshold: 1.0,
+//     };
+//     const observer = new IntersectionObserver(handleIntersect, options);
+//     observer.trigger;
+//     //an initial load of some data
+//     handleTakeData();
+
+//     document.removeEventListener("scroll", intersectionObserver);
+// }
 
 
-async function handleIntersect() {
-    console.warn("something is intersecting with the viewport");
-    objectFetchAPI.page += 1;
-    handleTakeData();
-     
-};
+// async function handleIntersect() {
+//     console.warn("something is intersecting with the viewport");
+//     objectFetchAPI.page += 1;
+//     handleTakeData();
+
+// };
